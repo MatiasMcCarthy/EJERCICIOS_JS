@@ -134,18 +134,26 @@ Eliminar Elementos de una Lista
 Modificar el ejercicio anterior para que cada elemento generado tenga un botón
 de "Eliminar" que borre solo ese elemento de la lista.
  */
-let itemValue=0;
-let itemAgregado=''
-function agregarItem(){
-    
-    itemValue++;
-    itemAgregado=itemAgregado+`<li><button id=${itemValue}>${itemValue}</button></li>`
-    document.getElementById('listaDesordenada').innerHTML=itemAgregado
+let itemValue = 0;
+const listaDesordenada = document.getElementById('listaDesordenada');
 
-    
-    
+function agregarItem() {
+  itemValue++;
+  const nuevoLi = document.createElement('li');//Creacion dinamica LI
+  const nuevoBoton = document.createElement('button'); // idem del button
+  nuevoBoton.textContent = itemValue;//Le asigno el contenido del button
+  nuevoBoton.id = `item-${itemValue}`; // Id único para el botón=item-contador
+  nuevoBoton.addEventListener('click', eliminarItem); // Agregamos el listener para eliminar
+
+  nuevoLi.appendChild(nuevoBoton);
+  listaDesordenada.appendChild(nuevoLi);
 }
 
+function eliminarItem(event) {
+  const botonClickeado = event.target; // El botón que fue clickeado
+  const listItemToRemove = botonClickeado.parentNode; // El elemento <li> padre del botón
+  listaDesordenada.removeChild(listItemToRemove); // Eliminar el <li> de la lista
+}
 
 
 
