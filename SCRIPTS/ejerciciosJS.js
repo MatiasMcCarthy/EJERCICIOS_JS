@@ -145,8 +145,8 @@ function agregarItem() {
   nuevoBoton.id = `item-${itemValue}`; // Id único para el botón=item-contador
   nuevoBoton.addEventListener('click', eliminarItem); // Agregamos el listener para eliminar
 
-  nuevoLi.appendChild(nuevoBoton);
-  listaDesordenada.appendChild(nuevoLi);
+  nuevoLi.appendChild(nuevoBoton);//agreaga el button como hijo del LI
+  listaDesordenada.appendChild(nuevoLi);//agrega como hijo el LI que tiene el boton
 }
 
 function eliminarItem(event) {
